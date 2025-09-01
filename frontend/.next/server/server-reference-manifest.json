@@ -8,20 +8,14 @@
           "exportedName": "signOutUser",
           "filename": "lib/actions.ts"
         },
-        "app/categories/[slug]/page": {
-          "moduleId": "[project]/.next-internal/server/app/categories/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "signOutUser",
-          "filename": "lib/actions.ts"
-        },
         "app/page": {
           "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "signOutUser",
           "filename": "lib/actions.ts"
         },
-        "app/products/[slug]/page": {
-          "moduleId": "[project]/.next-internal/server/app/products/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+        "app/search/page": {
+          "moduleId": "[project]/.next-internal/server/app/search/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
           "exportedName": "signOutUser",
           "filename": "lib/actions.ts"
@@ -29,9 +23,8 @@
       },
       "layer": {
         "app/cart/[cartcode]/page": "action-browser",
-        "app/categories/[slug]/page": "action-browser",
         "app/page": "action-browser",
-        "app/products/[slug]/page": "action-browser"
+        "app/search/page": "action-browser"
       },
       "filename": "lib/actions.ts",
       "exportedName": "signOutUser"
@@ -65,51 +58,6 @@
       },
       "filename": "lib/actions.ts",
       "exportedName": "deleteCartItem"
-    },
-    "406db119c46a91376dcdf1fefd8e04218968c23033": {
-      "workers": {
-        "app/products/[slug]/page": {
-          "moduleId": "[project]/.next-internal/server/app/products/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "addToCartAction",
-          "filename": "lib/actions.ts"
-        }
-      },
-      "layer": {
-        "app/products/[slug]/page": "action-browser"
-      },
-      "filename": "lib/actions.ts",
-      "exportedName": "addToCartAction"
-    },
-    "40fb35575712deeae09ff261b3e6d02c20f3c02cd5": {
-      "workers": {
-        "app/products/[slug]/page": {
-          "moduleId": "[project]/.next-internal/server/app/products/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "addToWishlistAction",
-          "filename": "lib/actions.ts"
-        }
-      },
-      "layer": {
-        "app/products/[slug]/page": "action-browser"
-      },
-      "filename": "lib/actions.ts",
-      "exportedName": "addToWishlistAction"
-    },
-    "40a69122a99a62caa7bc6bbd295faf191c8fe53262": {
-      "workers": {
-        "app/products/[slug]/page": {
-          "moduleId": "[project]/.next-internal/server/app/products/[slug]/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "addReview",
-          "filename": "lib/actions.ts"
-        }
-      },
-      "layer": {
-        "app/products/[slug]/page": "action-browser"
-      },
-      "filename": "lib/actions.ts",
-      "exportedName": "addReview"
     }
   },
   "edge": {},

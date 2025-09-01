@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/categories/food":{},"/categories/electronic":{},"/categories/toy":{},"/categories/clothings":{},"/categories/books":{}},"dynamicRoutes":{"/categories/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/categories/[slug]","routeRegex":"^\\/categories\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"f9960d5a7e73e5ea7d11d53a42ef8d75","previewModeSigningKey":"d4906b1ff54b549f54e96d70b4b18e9180760b77962e72ba3e102cca80f67bf3","previewModeEncryptionKey":"486a0b0fcb3071af0e2b2c839976f509fd7ede1073f14ac343da5596a3275fb6"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "8f430afac6da406e206ea7187e6c4a77",
+    "previewModeSigningKey": "5e4201dd5793ebfea96a364b0a3e4302e392689974237af2a8ec93f9e6d9a14e",
+    "previewModeEncryptionKey": "a36f51c1ba4bee152d1c6aa6b795c88c549fc1d380d5617a5cba7c19b0ded744"
+  }
+}
