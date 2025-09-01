@@ -19,7 +19,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-# CSRF_TRUSTED_ORIGINS = ['https://dddacd6ffd34.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://asteroidmart-ecommerce-fullstack-production.up.railway.app/']
 
 
 # Application definition
