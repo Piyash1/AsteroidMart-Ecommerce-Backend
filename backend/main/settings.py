@@ -16,18 +16,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*e&u%r8y%0ewm!58%=v6451x5rmozgl8=dxewruk^e5z#ja6f^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 if ENVIRONMENT == 'production':
+    DEBUG = False
     ALLOWED_HOSTS = [
         'asteroidmart-ecommerce-fullstack-production.up.railway.app',
         'localhost',
         '127.0.0.1'
     ]
+    CSRF_TRUSTED_ORIGINS = [
+        'https://asteroidmart-ecommerce-fullstack-production.up.railway.app'
+    ]
 else:
+    DEBUG = True
     ALLOWED_HOSTS = ["*"]
-
-CSRF_TRUSTED_ORIGINS = ['https://asteroidmart-ecommerce-fullstack-production.up.railway.app']
+    CSRF_TRUSTED_ORIGINS = ['https://dddacd6ffd34.ngrok-free.app']
 
 
 # Application definition
@@ -186,3 +190,14 @@ if ENVIRONMENT == 'production':
     # Use HTTPS in production
     SECURE_SSL_REDIRECT = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    
+    # Security headers
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    
+    # Trusted proxy settings for Railway
+    USE_X_FORWARDED_HOST = True
+    USE_X_FORWARDED_PORT = True
