@@ -1,0 +1,35 @@
+{
+  "node": {
+    "00ca0adbcb5b0d3aca410fe488ae8c44b826a5a7cb": {
+      "workers": {
+        "app/signin/page": {
+          "moduleId": "[project]/.next-internal/server/app/signin/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/signin/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "signOutUser",
+          "filename": "lib/actions.ts"
+        }
+      },
+      "layer": {
+        "app/signin/page": "action-browser"
+      },
+      "exportedName": "signOutUser",
+      "filename": "lib/actions.ts"
+    },
+    "009f3889cd16cb7c88349602da10dda71aac1f0bf4": {
+      "workers": {
+        "app/signin/page": {
+          "moduleId": "[project]/.next-internal/server/app/signin/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/signin/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "$$RSC_SERVER_ACTION_0",
+          "filename": "app/signin/page.tsx"
+        }
+      },
+      "layer": {
+        "app/signin/page": "rsc"
+      },
+      "exportedName": "$$RSC_SERVER_ACTION_0",
+      "filename": "app/signin/page.tsx"
+    }
+  },
+  "edge": {}
+}

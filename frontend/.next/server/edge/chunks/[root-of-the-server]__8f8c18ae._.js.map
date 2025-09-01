@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 16, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/auth.ts"],"sourcesContent":["import NextAuth from \"next-auth\"\r\nimport Google from \"next-auth/providers/google\"\r\n \r\nexport const { handlers, signIn, signOut, auth } = NextAuth({\r\n  providers: [Google],\r\n  \r\n  callbacks: {\r\n    async signIn({profile}) {\r\n\r\n      try {\r\n\r\n        const email = profile?.email;\r\n        const first_name = profile?.given_name;\r\n        const last_name = profile?.family_name;\r\n        const username = profile?.name?.split(\"@\")[0];\r\n        const profile_picture_url = profile?.picture;\r\n        \r\n        return true\r\n      }\r\n      catch(err:unknown) {\r\n        return false\r\n      }\r\n    }\r\n  }\r\n})"],"names":[],"mappings":";;;;;;;;;;AAAA;AACA;AAAA;;;AAEO,MAAM,EAAE,QAAQ,EAAE,MAAM,EAAE,OAAO,EAAE,IAAI,EAAE,GAAG,IAAA,wKAAQ,EAAC;IAC1D,WAAW;QAAC,wKAAM;KAAC;IAEnB,WAAW;QACT,MAAM,QAAO,EAAC,OAAO,EAAC;YAEpB,IAAI;gBAEF,MAAM,QAAQ,SAAS;gBACvB,MAAM,aAAa,SAAS;gBAC5B,MAAM,YAAY,SAAS;gBAC3B,MAAM,WAAW,SAAS,MAAM,MAAM,IAAI,CAAC,EAAE;gBAC7C,MAAM,sBAAsB,SAAS;gBAErC,OAAO;YACT,EACA,OAAM,KAAa;gBACjB,OAAO;YACT;QACF;IACF;AACF"}},
+    {"offset": {"line": 54, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/middleware.ts"],"sourcesContent":["export { auth as middleware } from \"@/auth\""],"names":[],"mappings":";AAAA"}}]
+}
