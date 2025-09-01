@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv  # pyright: ignore[reportMissingImports]
 
 load_dotenv()
+ENVIRONMENT = os.getenv('ENVIRONMENT', 'development').lower()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,7 +18,14 @@ SECRET_KEY = 'django-insecure-*e&u%r8y%0ewm!58%=v6451x5rmozgl8=dxewruk^e5z#ja6f^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+if ENVIRONMENT == 'production':
+    ALLOWED_HOSTS = [
+        'asteroidmart-ecommerce-fullstack-production.up.railway.app',
+        'localhost',
+        '127.0.0.1'
+    ]
+else:
+    ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = ['https://asteroidmart-ecommerce-fullstack-production.up.railway.app']
 
@@ -48,11 +56,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React development server
-    "http://localhost:8080",  # Vue development server
-    "http://127.0.0.1:3000",  # Alternative localhost format
-]
+if ENVIRONMENT == 'production':
+    CORS_ALLOWED_ORIGINS = [
+        "https://asteroidmart-ecommerce-fullstack-production.up.railway.app",
+        "https://your-frontend-domain.com"  # Add your frontend domain
+    ]
+    CORS_ALLOW_CREDENTIALS = True
+else:
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:3000",
+        "http://localhost:8080",
+        "http://127.0.0.1:3000"
+    ]
 
 ROOT_URLCONF = 'main.urls'
 
@@ -78,7 +93,7 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 # Environment-based database switching
-ENVIRONMENT = os.getenv('ENVIRONMENT', 'development').lower()
+
 
 if ENVIRONMENT == 'production':
     # PostgreSQL for production
@@ -157,3 +172,17 @@ AUTH_USER_MODEL = 'api.CustomUser'
 STRIPE_SECRETE_KEY = os.getenv('STRIPE_SECRETE_KEY')
 STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
 WEBHOOK_SECRET = os.getenv('WEBHOOK_SECRET')
+
+
+# Session and Cookie settings for production
+if ENVIRONMENT == 'production':
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_HTTPONLY = True
+    CSRF_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = 'Lax'
+    CSRF_COOKIE_SAMESITE = 'Lax'
+    
+    # Use HTTPS in production
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
