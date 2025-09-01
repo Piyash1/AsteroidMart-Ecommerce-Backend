@@ -3,7 +3,6 @@ import os
 from dotenv import load_dotenv  # pyright: ignore[reportMissingImports]
 
 load_dotenv()
-ENVIRONMENT = os.getenv('ENVIRONMENT', 'development').lower()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -16,22 +15,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*e&u%r8y%0ewm!58%=v6451x5rmozgl8=dxewruk^e5z#ja6f^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
+ALLOWED_HOSTS = ["*"]
 
-if ENVIRONMENT == 'production':
-    DEBUG = False
-    ALLOWED_HOSTS = [
-        'asteroidmart-ecommerce-fullstack-production.up.railway.app',
-        'localhost',
-        '127.0.0.1'
-    ]
-    CSRF_TRUSTED_ORIGINS = [
-        'https://asteroidmart-ecommerce-fullstack-production.up.railway.app'
-    ]
-else:
-    DEBUG = True
-    ALLOWED_HOSTS = ["*"]
-    CSRF_TRUSTED_ORIGINS = ['https://dddacd6ffd34.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://asteroidmart-ecommerce-fullstack-production.up.railway.app']
 
 
 # Application definition
@@ -60,18 +48,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if ENVIRONMENT == 'production':
-    CORS_ALLOWED_ORIGINS = [
-        "https://asteroidmart-ecommerce-fullstack-production.up.railway.app",
-        "https://your-frontend-domain.com"  # Add your frontend domain
-    ]
-    CORS_ALLOW_CREDENTIALS = True
-else:
-    CORS_ALLOWED_ORIGINS = [
-        "http://localhost:3000",
-        "http://localhost:8080",
-        "http://127.0.0.1:3000"
-    ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # React development server
+    "http://localhost:8080",  # Vue development server
+    "http://127.0.0.1:3000",  # Alternative localhost format
+]
 
 ROOT_URLCONF = 'main.urls'
 
@@ -97,18 +78,18 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 # Environment-based database switching
-
+ENVIRONMENT = os.getenv('ENVIRONMENT', 'development').lower()
 
 if ENVIRONMENT == 'production':
     # PostgreSQL for production
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('PG_DATABASE', 'railway'),
-            'USER': os.getenv('PG_USER', 'postgres'),
+            'NAME': 'railway',
+            'USER': 'postgres',
             'PASSWORD': os.getenv('PG_PASSWORD'),
             'HOST': os.getenv('PG_HOST'),
-            'PORT': os.getenv('PG_PORT', '5432'),
+            'PORT': os.getenv('PG_PORT'),
         }
     }
 else:
@@ -158,6 +139,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR/'staticfiles'
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
@@ -176,28 +160,3 @@ AUTH_USER_MODEL = 'api.CustomUser'
 STRIPE_SECRETE_KEY = os.getenv('STRIPE_SECRETE_KEY')
 STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
 WEBHOOK_SECRET = os.getenv('WEBHOOK_SECRET')
-
-
-# Session and Cookie settings for production
-if ENVIRONMENT == 'production':
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SESSION_COOKIE_HTTPONLY = True
-    CSRF_COOKIE_HTTPONLY = True
-    SESSION_COOKIE_SAMESITE = 'Lax'
-    CSRF_COOKIE_SAMESITE = 'Lax'
-    
-    # Use HTTPS in production
-    SECURE_SSL_REDIRECT = True
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    
-    # Security headers
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_HSTS_SECONDS = 31536000  # 1 year
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
-    
-    # Trusted proxy settings for Railway
-    USE_X_FORWARDED_HOST = True
-    USE_X_FORWARDED_PORT = True

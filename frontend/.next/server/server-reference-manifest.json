@@ -25,27 +25,13 @@
           "async": false,
           "exportedName": "signOutUser",
           "filename": "lib/actions.ts"
-        },
-        "app/search/page": {
-          "moduleId": "[project]/.next-internal/server/app/search/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "signOutUser",
-          "filename": "lib/actions.ts"
-        },
-        "app/signin/page": {
-          "moduleId": "[project]/.next-internal/server/app/signin/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/signin/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "signOutUser",
-          "filename": "lib/actions.ts"
         }
       },
       "layer": {
         "app/cart/[cartcode]/page": "action-browser",
         "app/categories/[slug]/page": "action-browser",
         "app/page": "action-browser",
-        "app/products/[slug]/page": "action-browser",
-        "app/search/page": "action-browser",
-        "app/signin/page": "action-browser"
+        "app/products/[slug]/page": "action-browser"
       },
       "filename": "lib/actions.ts",
       "exportedName": "signOutUser"
@@ -124,21 +110,6 @@
       },
       "filename": "lib/actions.ts",
       "exportedName": "addReview"
-    },
-    "009f3889cd16cb7c88349602da10dda71aac1f0bf4": {
-      "workers": {
-        "app/signin/page": {
-          "moduleId": "[project]/.next-internal/server/app/signin/page/actions.js { ACTIONS_MODULE0 => \"[project]/lib/actions.ts [app-rsc] (ecmascript)\", ACTIONS_MODULE1 => \"[project]/app/signin/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "$$RSC_SERVER_ACTION_0",
-          "filename": "app/signin/page.tsx"
-        }
-      },
-      "layer": {
-        "app/signin/page": "rsc"
-      },
-      "filename": "app/signin/page.tsx",
-      "exportedName": "$$RSC_SERVER_ACTION_0"
     }
   },
   "edge": {},
