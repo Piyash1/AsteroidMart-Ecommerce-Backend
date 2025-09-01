@@ -207,4 +207,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# End of https://www.toptal.com/developers/gitignore/api/django,nextjs
+# End of https://www.toptal.com/developers/gitignore/api/django,nextjsfrontend/
+frontend/*
