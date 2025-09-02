@@ -413,14 +413,10 @@ def my_webhook_view(request):
     )
   except ValueError as e:
     # Invalid payload
-    print(f"Invalid payload: {e}")
     return HttpResponse(status=400)
   except stripe.error.SignatureVerificationError as e:
     # Invalid signature
-    print(f"Invalid signature: {e}")
     return HttpResponse(status=400)
-
-  print(f"Webhook received event: {event['type']}")
 
   if (
     event['type'] == 'checkout.session.completed'
@@ -428,51 +424,33 @@ def my_webhook_view(request):
   ):
     session = event['data']['object']
     cart_code = session.get("metadata", {}).get("cart_code")
-    
-    print(f"Processing checkout completion for cart_code: {cart_code}")
-    
-    if not cart_code:
-      print("ERROR: No cart_code found in session metadata")
-      return HttpResponse(status=400)
-    
-    try:
-      fulfill_checkout(session, cart_code)
-      print("Order fulfillment completed successfully")
-    except Exception as e:
-      print(f"ERROR in fulfill_checkout: {str(e)}")
-      return HttpResponse(status=500)
+
+    fulfill_checkout(session, cart_code)
+
 
   return HttpResponse(status=200)
 
 
 def fulfill_checkout(session, cart_code):
-    try:
-        print(f"Starting fulfill_checkout with cart_code: {cart_code}")
-        print(f"Session data: {session}")
-        
-        order = Order.objects.create(stripe_checkout_id=session["id"],
-            amount=session["amount_total"],
-            currency=session["currency"],
-            customer_email=session["customer_email"],
-            status="Paid")
-        
-        print(f"Order created: {order.id}")
+    
+    order = Order.objects.create(stripe_checkout_id=session["id"],
+        amount=session["amount_total"],
+        currency=session["currency"],
+        customer_email=session["customer_email"],
+        status="Paid")
+    
 
-        cart = Cart.objects.get(cart_code=cart_code)
-        cartitems = cart.cartitems.all()
-        print(f"Found {cartitems.count()} cart items")
+    print(session)
 
-        for item in cartitems:
-            orderitem = OrderItem.objects.create(order=order, product=item.product, 
-                                                 quantity=item.quantity)
-            print(f"OrderItem created: {orderitem.id}")
-        
-        cart.delete()
-        print("Cart deleted successfully")
-        
-    except Exception as e:
-        print(f"Error in fulfill_checkout: {str(e)}")
-        raise e
+
+    cart = Cart.objects.get(cart_code=cart_code)
+    cartitems = cart.cartitems.all()
+
+    for item in cartitems:
+        orderitem = OrderItem.objects.create(order=order, product=item.product, 
+                                             quantity=item.quantity)
+    
+    cart.delete()
     
     
     
