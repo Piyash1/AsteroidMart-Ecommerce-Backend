@@ -55,6 +55,12 @@ CORS_ALLOWED_ORIGINS = [
     "https://asteroidmart.vercel.app",
 ]
 
+# CORS settings
+CORS_ALLOW_CREDENTIALS = True
+
+# Only apply CORS to API endpoints, not media files
+CORS_URLS_REGEX = r'^/api/.*$'
+
 ROOT_URLCONF = 'main.urls'
 
 TEMPLATES = [
