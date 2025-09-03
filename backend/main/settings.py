@@ -55,8 +55,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://asteroidmart.vercel.app",
 ]
 
-# CORS settings
+# Additional CORS settings for media files
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_HEADERS = [
     'accept',
