@@ -48,33 +48,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",  # React development server
-#     "http://localhost:8080",  # Vue development server
-#     "http://127.0.0.1:3000",  # Alternative localhost format
-#     "https://asteroidmart.vercel.app",
-# ]
-
-# Additional CORS settings for media files
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_ALL_ORIGINS = True
-
-CORS_ALLOW_HEADERS = [
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
-]
-
-CORS_EXPOSE_HEADERS = [
-    'Content-Type',
-    'Content-Length',
-    'Content-Disposition',
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # React development server
+    "http://localhost:8080",  # Vue development server
+    "http://127.0.0.1:3000",  # Alternative localhost format
 ]
 
 ROOT_URLCONF = 'main.urls'
