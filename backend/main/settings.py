@@ -19,7 +19,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ['https://asteroidmart-ecommerce-fullstack-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = [
+    'https://asteroidmart-ecommerce-fullstack-production.up.railway.app',
+    'https://asteroidmart.vercel.app',
+]
 
 
 # Application definition
@@ -52,6 +55,31 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React development server
     "http://localhost:8080",  # Vue development server
     "http://127.0.0.1:3000",  # Alternative localhost format
+    "https://asteroidmart.vercel.app",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = False  # Keep this False when using CORS_ALLOWED_ORIGINS
+
+# Only apply CORS to API endpoints, not media files
+CORS_URLS_REGEX = r'^/api/.*$'
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+CORS_EXPOSE_HEADERS = [
+    'Content-Type',
+    'Content-Length',
+    'Content-Disposition',
 ]
 
 ROOT_URLCONF = 'main.urls'
