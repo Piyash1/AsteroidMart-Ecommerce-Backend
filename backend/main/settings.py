@@ -58,8 +58,23 @@ CORS_ALLOWED_ORIGINS = [
 # CORS settings
 CORS_ALLOW_CREDENTIALS = True
 
-# Only apply CORS to API endpoints, not media files
-CORS_URLS_REGEX = r'^/api/.*$'
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+CORS_EXPOSE_HEADERS = [
+    'Content-Type',
+    'Content-Length',
+    'Content-Disposition',
+]
 
 ROOT_URLCONF = 'main.urls'
 
